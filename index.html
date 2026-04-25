@@ -64,7 +64,7 @@
             to { transform: rotate(360deg); }
         }
 
-        /* TOP BAR - SAMA KAYAK DASHBOARD */
+        /* TOP BAR */
         .top-bar {
             position: sticky;
             top: 0;
@@ -121,7 +121,7 @@
             width: 42px;
         }
 
-        /* SIDEBAR - SAMA KAYAK DASHBOARD */
+        /* SIDEBAR - HANYA BACK TO DASHBOARD */
         .sidebar-overlay {
             position: fixed;
             top: 0;
@@ -707,7 +707,7 @@
     </style>
 </head>
 <body>
-    <!-- TOP BAR SAMA KAYAK DASHBOARD -->
+    <!-- TOP BAR -->
     <div class="top-bar">
         <div class="top-bar-content">
             <div class="menu-btn" id="menuBtn">
@@ -720,41 +720,17 @@
         </div>
     </div>
 
-    <!-- SIDEBAR SAMA KAYAK DASHBOARD -->
+    <!-- SIDEBAR - HANYA BACK TO DASHBOARD -->
     <div class="sidebar-overlay" id="sidebarOverlay"></div>
     <div class="sidebar" id="sidebar">
         <div class="sidebar-header">
             <h3>Menu</h3>
-            <p>Gojo Vip Dashboard</p>
+            <p>Gojo Vip</p>
         </div>
         <ul class="sidebar-menu">
             <li onclick="window.location.href='/dashboard'">
-                <i class="fa-solid fa-house"></i>
-                <span>Dashboard</span>
-            </li>
-            <li onclick="window.location.href='/add-sender'">
-                <i class="fa-solid fa-plus-circle"></i>
-                <span>Add Sender</span>
-            </li>
-            <li onclick="window.location.href='/execution'">
-                <i class="fa-solid fa-skull"></i>
-                <span>Bug Tools</span>
-            </li>
-            <li onclick="window.location.href='https://spamnglgojo.vercel.app'">
-                <i class="fa-solid fa-message"></i>
-                <span>Spam NGL</span>
-            </li>
-            <li onclick="window.location.href='https://getcodegojo.vercel.app'">
-                <i class="fa-solid fa-code"></i>
-                <span>Get Code</span>
-            </li>
-            <li onclick="window.location.href='https://iqciphone-gojo.vercel.app'">
-                <i class="fa-brands fa-apple"></i>
-                <span>IQC iPhone</span>
-            </li>
-            <li onclick="window.location.href='/logout'">
-                <i class="fa-solid fa-right-from-bracket"></i>
-                <span>Logout</span>
+                <i class="fa-solid fa-arrow-left"></i>
+                <span>Back to Dashboard</span>
             </li>
         </ul>
     </div>
@@ -849,7 +825,7 @@
         </div>
     </div>
 
-    <!-- BOTTOM BAR SAMA KAYAK DASHBOARD -->
+    <!-- BOTTOM BAR -->
     <div class="bottom-bar">
         <div class="logo-pesan">
             <i class="fa-solid fa-paper-plane"></i>
@@ -875,7 +851,7 @@
     <div class="toast-container" id="toastContainer"></div>
 
     <script>
-        // SIDEBAR - SAMA KAYAK DASHBOARD
+        // SIDEBAR
         const menuBtn = document.getElementById('menuBtn');
         const sidebar = document.getElementById('sidebar');
         const sidebarOverlay = document.getElementById('sidebarOverlay');
