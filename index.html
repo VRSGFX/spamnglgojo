@@ -80,134 +80,22 @@
         .top-bar-content {
             display: flex;
             align-items: center;
-            justify-content: space-between;
+            justify-content: center;
             max-width: 500px;
             margin: 0 auto;
             padding: 0 20px;
-        }
-
-        .menu-btn {
-            width: 42px;
-            height: 42px;
-            border-radius: 14px;
-            background: #1A1A1A;
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            color: #FFFFFF;
-            font-size: 20px;
-        }
-
-        .menu-btn:hover {
-            background: #252525;
-            border-color: rgba(220, 38, 38, 0.3);
+            position: relative;
         }
 
         .page-title {
-            font-size: 16px;
-            font-weight: 600;
+            font-size: 18px;
+            font-weight: 700;
             color: #FFFFFF;
         }
 
         .page-title span {
             color: #dc2626;
             animation: softGlow 2s ease-in-out infinite alternate;
-        }
-
-        .top-bar-right {
-            width: 42px;
-        }
-
-        /* SIDEBAR - HANYA BACK TO DASHBOARD */
-        .sidebar-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.6);
-            backdrop-filter: blur(8px);
-            z-index: 100;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s ease;
-        }
-
-        .sidebar-overlay.active {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        .sidebar {
-            position: fixed;
-            top: 0;
-            left: -280px;
-            width: 260px;
-            height: 100%;
-            background: rgba(18, 18, 24, 0.98);
-            backdrop-filter: blur(20px);
-            border-right: 1px solid rgba(255, 255, 255, 0.06);
-            z-index: 101;
-            transition: left 0.3s ease;
-            padding: 20px 0;
-            overflow-y: auto;
-        }
-
-        .sidebar.active {
-            left: 0;
-        }
-
-        .sidebar-header {
-            padding: 0 20px 20px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-            margin-bottom: 15px;
-        }
-
-        .sidebar-header h3 {
-            font-size: 18px;
-            font-weight: 700;
-            color: #FFFFFF;
-        }
-
-        .sidebar-header p {
-            font-size: 12px;
-            color: #8A94A6;
-            margin-top: 4px;
-        }
-
-        .sidebar-menu {
-            list-style: none;
-        }
-
-        .sidebar-menu li {
-            padding: 14px 20px;
-            display: flex;
-            align-items: center;
-            gap: 14px;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            color: #8A94A6;
-            border-left: 3px solid transparent;
-        }
-
-        .sidebar-menu li:hover {
-            background: rgba(255, 255, 255, 0.03);
-            color: #FFFFFF;
-            border-left-color: #dc2626;
-            transform: translateX(5px);
-        }
-
-        .sidebar-menu li i {
-            width: 24px;
-            font-size: 18px;
-        }
-
-        .sidebar-menu li span {
-            font-size: 14px;
-            font-weight: 500;
         }
 
         /* BANNER */
@@ -707,32 +595,13 @@
     </style>
 </head>
 <body>
-    <!-- TOP BAR -->
+    <!-- TOP BAR (TANPA GARIS 3) -->
     <div class="top-bar">
         <div class="top-bar-content">
-            <div class="menu-btn" id="menuBtn">
-                <i class="fa-solid fa-bars"></i>
-            </div>
             <div class="page-title">
                 SPAM <span>NGL</span>
             </div>
-            <div class="top-bar-right"></div>
         </div>
-    </div>
-
-    <!-- SIDEBAR - HANYA BACK TO DASHBOARD -->
-    <div class="sidebar-overlay" id="sidebarOverlay"></div>
-    <div class="sidebar" id="sidebar">
-        <div class="sidebar-header">
-            <h3>Menu</h3>
-            <p>Gojo Vip</p>
-        </div>
-        <ul class="sidebar-menu">
-            <li onclick="window.location.href='/dashboard'">
-                <i class="fa-solid fa-arrow-left"></i>
-                <span>Back to Dashboard</span>
-            </li>
-        </ul>
     </div>
 
     <div class="container">
@@ -851,26 +720,6 @@
     <div class="toast-container" id="toastContainer"></div>
 
     <script>
-        // SIDEBAR
-        const menuBtn = document.getElementById('menuBtn');
-        const sidebar = document.getElementById('sidebar');
-        const sidebarOverlay = document.getElementById('sidebarOverlay');
-        
-        function openSidebar() {
-            sidebar.classList.add('active');
-            sidebarOverlay.classList.add('active');
-            document.body.style.overflow = 'hidden';
-        }
-        
-        function closeSidebar() {
-            sidebar.classList.remove('active');
-            sidebarOverlay.classList.remove('active');
-            document.body.style.overflow = '';
-        }
-        
-        menuBtn.addEventListener('click', openSidebar);
-        sidebarOverlay.addEventListener('click', closeSidebar);
-
         // TOAST
         const toastContainer = document.getElementById('toastContainer');
         
@@ -929,7 +778,6 @@
             const jumlah = document.getElementById('jumlah').value.trim();
             const pesan = document.getElementById('pesan').value.trim();
             
-            // VALIDASI
             if (!link) {
                 showToast('Masukkan link NGL!', 'warning');
                 return;
@@ -956,7 +804,6 @@
                 return;
             }
 
-            // GANTI TEKS TOMBOL
             const originalText = tombolKirim.innerHTML;
             tombolKirim.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> MENGIRIM...';
             tombolKirim.disabled = true;
@@ -973,7 +820,6 @@
                 const data = await response.json();
                 
                 if (data.status === true) {
-                    // SHOW MODAL
                     modalMessage.textContent = 'Pesan berhasil dikirim!';
                     modalDetails.innerHTML = `
                         <div><span>Target</span><span>${link.length > 25 ? link.substring(0, 22) + '...' : link}</span></div>
@@ -982,7 +828,6 @@
                     `;
                     previewModal.classList.add('show');
                     
-                    // RESET FORM
                     document.getElementById('link').value = '';
                     document.getElementById('jumlah').value = '';
                     document.getElementById('pesan').value = '';
@@ -1007,7 +852,6 @@
             previewModal.classList.remove('show');
         }
 
-        // PREVENT FORM SUBMIT
         document.getElementById('spamForm').addEventListener('submit', (e) => {
             e.preventDefault();
         });
